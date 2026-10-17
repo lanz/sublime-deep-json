@@ -1,0 +1,1070 @@
+{
+  "_comment": "Real ST4 scope stacks for JSON delimiters, captured by dev/probe_bracket_scopes.py. meta_atoms is how many meta.* atoms the stack carries; expected_depth is the nesting depth counted from the text. They should be equal for every delimiter.",
+  "sublime_build": 4215,
+  "delimiters": 118,
+  "agree_with_depth": 116,
+  "cases": [
+    {
+      "file": "object.json",
+      "row": 1,
+      "col": 1,
+      "char": "{",
+      "expected_depth": 1,
+      "meta_atoms": 1,
+      "scope": "source.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "object.json",
+      "row": 2,
+      "col": 21,
+      "char": "{",
+      "expected_depth": 2,
+      "meta_atoms": 2,
+      "scope": "source.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "object.json",
+      "row": 3,
+      "col": 23,
+      "char": "{",
+      "expected_depth": 3,
+      "meta_atoms": 3,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "object.json",
+      "row": 4,
+      "col": 25,
+      "char": "{",
+      "expected_depth": 4,
+      "meta_atoms": 4,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "object.json",
+      "row": 5,
+      "col": 27,
+      "char": "{",
+      "expected_depth": 5,
+      "meta_atoms": 5,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "object.json",
+      "row": 6,
+      "col": 29,
+      "char": "{",
+      "expected_depth": 6,
+      "meta_atoms": 6,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "object.json",
+      "row": 7,
+      "col": 31,
+      "char": "{",
+      "expected_depth": 7,
+      "meta_atoms": 7,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "object.json",
+      "row": 8,
+      "col": 33,
+      "char": "{",
+      "expected_depth": 8,
+      "meta_atoms": 8,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "object.json",
+      "row": 9,
+      "col": 35,
+      "char": "{",
+      "expected_depth": 9,
+      "meta_atoms": 9,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "object.json",
+      "row": 10,
+      "col": 37,
+      "char": "{",
+      "expected_depth": 10,
+      "meta_atoms": 10,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "object.json",
+      "row": 12,
+      "col": 19,
+      "char": "}",
+      "expected_depth": 10,
+      "meta_atoms": 10,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "object.json",
+      "row": 13,
+      "col": 17,
+      "char": "}",
+      "expected_depth": 9,
+      "meta_atoms": 9,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "object.json",
+      "row": 14,
+      "col": 15,
+      "char": "}",
+      "expected_depth": 8,
+      "meta_atoms": 8,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "object.json",
+      "row": 15,
+      "col": 13,
+      "char": "}",
+      "expected_depth": 7,
+      "meta_atoms": 7,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "object.json",
+      "row": 16,
+      "col": 11,
+      "char": "}",
+      "expected_depth": 6,
+      "meta_atoms": 6,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "object.json",
+      "row": 17,
+      "col": 9,
+      "char": "}",
+      "expected_depth": 5,
+      "meta_atoms": 5,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "object.json",
+      "row": 18,
+      "col": 7,
+      "char": "}",
+      "expected_depth": 4,
+      "meta_atoms": 4,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "object.json",
+      "row": 19,
+      "col": 5,
+      "char": "}",
+      "expected_depth": 3,
+      "meta_atoms": 3,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "object.json",
+      "row": 20,
+      "col": 3,
+      "char": "}",
+      "expected_depth": 2,
+      "meta_atoms": 2,
+      "scope": "source.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "object.json",
+      "row": 21,
+      "col": 1,
+      "char": "}",
+      "expected_depth": 1,
+      "meta_atoms": 1,
+      "scope": "source.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "array.json",
+      "row": 1,
+      "col": 1,
+      "char": "{",
+      "expected_depth": 1,
+      "meta_atoms": 1,
+      "scope": "source.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "array.json",
+      "row": 2,
+      "col": 20,
+      "char": "[",
+      "expected_depth": 2,
+      "meta_atoms": 2,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "array.json",
+      "row": 4,
+      "col": 5,
+      "char": "[",
+      "expected_depth": 3,
+      "meta_atoms": 3,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "array.json",
+      "row": 6,
+      "col": 7,
+      "char": "[",
+      "expected_depth": 4,
+      "meta_atoms": 4,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "array.json",
+      "row": 8,
+      "col": 9,
+      "char": "[",
+      "expected_depth": 5,
+      "meta_atoms": 5,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "array.json",
+      "row": 10,
+      "col": 11,
+      "char": "[",
+      "expected_depth": 6,
+      "meta_atoms": 6,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "array.json",
+      "row": 12,
+      "col": 13,
+      "char": "[",
+      "expected_depth": 7,
+      "meta_atoms": 7,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "array.json",
+      "row": 14,
+      "col": 15,
+      "char": "[",
+      "expected_depth": 8,
+      "meta_atoms": 8,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "array.json",
+      "row": 16,
+      "col": 17,
+      "char": "[",
+      "expected_depth": 9,
+      "meta_atoms": 9,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "array.json",
+      "row": 18,
+      "col": 19,
+      "char": "[",
+      "expected_depth": 10,
+      "meta_atoms": 10,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "array.json",
+      "row": 20,
+      "col": 19,
+      "char": "]",
+      "expected_depth": 10,
+      "meta_atoms": 10,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "array.json",
+      "row": 21,
+      "col": 17,
+      "char": "]",
+      "expected_depth": 9,
+      "meta_atoms": 9,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "array.json",
+      "row": 22,
+      "col": 15,
+      "char": "]",
+      "expected_depth": 8,
+      "meta_atoms": 8,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "array.json",
+      "row": 23,
+      "col": 13,
+      "char": "]",
+      "expected_depth": 7,
+      "meta_atoms": 7,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "array.json",
+      "row": 24,
+      "col": 11,
+      "char": "]",
+      "expected_depth": 6,
+      "meta_atoms": 6,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "array.json",
+      "row": 25,
+      "col": 9,
+      "char": "]",
+      "expected_depth": 5,
+      "meta_atoms": 5,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.sequence.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "array.json",
+      "row": 26,
+      "col": 7,
+      "char": "]",
+      "expected_depth": 4,
+      "meta_atoms": 4,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "array.json",
+      "row": 27,
+      "col": 5,
+      "char": "]",
+      "expected_depth": 3,
+      "meta_atoms": 3,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "array.json",
+      "row": 28,
+      "col": 3,
+      "char": "]",
+      "expected_depth": 2,
+      "meta_atoms": 2,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "array.json",
+      "row": 29,
+      "col": 1,
+      "char": "}",
+      "expected_depth": 1,
+      "meta_atoms": 1,
+      "scope": "source.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 1,
+      "col": 1,
+      "char": "{",
+      "expected_depth": 1,
+      "meta_atoms": 1,
+      "scope": "source.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 2,
+      "col": 20,
+      "char": "[",
+      "expected_depth": 2,
+      "meta_atoms": 2,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 4,
+      "col": 5,
+      "char": "[",
+      "expected_depth": 3,
+      "meta_atoms": 3,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 6,
+      "col": 5,
+      "char": "]",
+      "expected_depth": 3,
+      "meta_atoms": 3,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 7,
+      "col": 5,
+      "char": "{",
+      "expected_depth": 3,
+      "meta_atoms": 3,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 8,
+      "col": 25,
+      "char": "[",
+      "expected_depth": 4,
+      "meta_atoms": 4,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 11,
+      "col": 9,
+      "char": "{",
+      "expected_depth": 5,
+      "meta_atoms": 5,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 12,
+      "col": 29,
+      "char": "[",
+      "expected_depth": 6,
+      "meta_atoms": 6,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 14,
+      "col": 13,
+      "char": "[",
+      "expected_depth": 7,
+      "meta_atoms": 7,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 16,
+      "col": 15,
+      "char": "{",
+      "expected_depth": 8,
+      "meta_atoms": 8,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 17,
+      "col": 35,
+      "char": "[",
+      "expected_depth": 9,
+      "meta_atoms": 9,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.mapping.value.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 19,
+      "col": 19,
+      "char": "{",
+      "expected_depth": 10,
+      "meta_atoms": 10,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 21,
+      "col": 19,
+      "char": "}",
+      "expected_depth": 10,
+      "meta_atoms": 10,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 22,
+      "col": 17,
+      "char": "]",
+      "expected_depth": 9,
+      "meta_atoms": 9,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.mapping.value.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 23,
+      "col": 15,
+      "char": "}",
+      "expected_depth": 8,
+      "meta_atoms": 8,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.sequence.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 24,
+      "col": 13,
+      "char": "]",
+      "expected_depth": 7,
+      "meta_atoms": 7,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 25,
+      "col": 11,
+      "char": "]",
+      "expected_depth": 6,
+      "meta_atoms": 6,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 26,
+      "col": 9,
+      "char": "}",
+      "expected_depth": 5,
+      "meta_atoms": 5,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 27,
+      "col": 7,
+      "char": "]",
+      "expected_depth": 4,
+      "meta_atoms": 4,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 28,
+      "col": 5,
+      "char": "}",
+      "expected_depth": 3,
+      "meta_atoms": 3,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 29,
+      "col": 3,
+      "char": "]",
+      "expected_depth": 2,
+      "meta_atoms": 2,
+      "scope": "source.json meta.mapping.value.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "mixed.json",
+      "row": 30,
+      "col": 1,
+      "char": "}",
+      "expected_depth": 1,
+      "meta_atoms": 1,
+      "scope": "source.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 1,
+      "col": 1,
+      "char": "{",
+      "expected_depth": 1,
+      "meta_atoms": 1,
+      "scope": "source.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 3,
+      "col": 11,
+      "char": "{",
+      "expected_depth": 2,
+      "meta_atoms": 2,
+      "scope": "source.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 6,
+      "col": 3,
+      "char": "}",
+      "expected_depth": 2,
+      "meta_atoms": 2,
+      "scope": "source.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 7,
+      "col": 12,
+      "char": "{",
+      "expected_depth": 2,
+      "meta_atoms": 2,
+      "scope": "source.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 8,
+      "col": 14,
+      "char": "{",
+      "expected_depth": 3,
+      "meta_atoms": 2,
+      "scope": "source.json meta.mapping.value.json meta.mapping.key.json string.quoted.double.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 8,
+      "col": 22,
+      "char": "}",
+      "expected_depth": 3,
+      "meta_atoms": 2,
+      "scope": "source.json meta.mapping.value.json meta.mapping.key.json string.quoted.double.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 8,
+      "col": 35,
+      "char": "{",
+      "expected_depth": 3,
+      "meta_atoms": 3,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 9,
+      "col": 14,
+      "char": "{",
+      "expected_depth": 4,
+      "meta_atoms": 4,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 10,
+      "col": 23,
+      "char": "[",
+      "expected_depth": 5,
+      "meta_atoms": 5,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 11,
+      "col": 11,
+      "char": "{",
+      "expected_depth": 6,
+      "meta_atoms": 6,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.sequence.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 15,
+      "col": 23,
+      "char": "{",
+      "expected_depth": 7,
+      "meta_atoms": 7,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 15,
+      "col": 60,
+      "char": "}",
+      "expected_depth": 7,
+      "meta_atoms": 7,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.sequence.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 16,
+      "col": 11,
+      "char": "}",
+      "expected_depth": 6,
+      "meta_atoms": 6,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.sequence.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 17,
+      "col": 9,
+      "char": "]",
+      "expected_depth": 5,
+      "meta_atoms": 5,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 18,
+      "col": 22,
+      "char": "{",
+      "expected_depth": 5,
+      "meta_atoms": 5,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 19,
+      "col": 18,
+      "char": "{",
+      "expected_depth": 6,
+      "meta_atoms": 6,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 20,
+      "col": 24,
+      "char": "{",
+      "expected_depth": 7,
+      "meta_atoms": 7,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 21,
+      "col": 35,
+      "char": "{",
+      "expected_depth": 8,
+      "meta_atoms": 8,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 22,
+      "col": 27,
+      "char": "{",
+      "expected_depth": 9,
+      "meta_atoms": 9,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 24,
+      "col": 33,
+      "char": "{",
+      "expected_depth": 10,
+      "meta_atoms": 10,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 25,
+      "col": 28,
+      "char": "{",
+      "expected_depth": 11,
+      "meta_atoms": 11,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 25,
+      "col": 75,
+      "char": "}",
+      "expected_depth": 11,
+      "meta_atoms": 11,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 26,
+      "col": 29,
+      "char": "{",
+      "expected_depth": 11,
+      "meta_atoms": 11,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 26,
+      "col": 63,
+      "char": "}",
+      "expected_depth": 11,
+      "meta_atoms": 11,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 27,
+      "col": 32,
+      "char": "{",
+      "expected_depth": 11,
+      "meta_atoms": 11,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 29,
+      "col": 37,
+      "char": "{",
+      "expected_depth": 12,
+      "meta_atoms": 12,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 30,
+      "col": 34,
+      "char": "{",
+      "expected_depth": 13,
+      "meta_atoms": 13,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 30,
+      "col": 72,
+      "char": "}",
+      "expected_depth": 13,
+      "meta_atoms": 13,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 31,
+      "col": 37,
+      "char": "{",
+      "expected_depth": 13,
+      "meta_atoms": 13,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 33,
+      "col": 35,
+      "char": "[",
+      "expected_depth": 14,
+      "meta_atoms": 14,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.sequence.json punctuation.section.sequence.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 33,
+      "col": 74,
+      "char": "]",
+      "expected_depth": 14,
+      "meta_atoms": 14,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.sequence.json punctuation.section.sequence.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 34,
+      "col": 25,
+      "char": "}",
+      "expected_depth": 13,
+      "meta_atoms": 13,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 35,
+      "col": 23,
+      "char": "}",
+      "expected_depth": 12,
+      "meta_atoms": 12,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 36,
+      "col": 21,
+      "char": "}",
+      "expected_depth": 11,
+      "meta_atoms": 11,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 37,
+      "col": 33,
+      "char": "{",
+      "expected_depth": 11,
+      "meta_atoms": 11,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 39,
+      "col": 32,
+      "char": "{",
+      "expected_depth": 12,
+      "meta_atoms": 12,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 40,
+      "col": 39,
+      "char": "{",
+      "expected_depth": 13,
+      "meta_atoms": 13,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 41,
+      "col": 35,
+      "char": "{",
+      "expected_depth": 14,
+      "meta_atoms": 14,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 41,
+      "col": 71,
+      "char": "}",
+      "expected_depth": 14,
+      "meta_atoms": 14,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 42,
+      "col": 39,
+      "char": "{",
+      "expected_depth": 14,
+      "meta_atoms": 14,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 42,
+      "col": 76,
+      "char": "}",
+      "expected_depth": 14,
+      "meta_atoms": 14,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 43,
+      "col": 25,
+      "char": "}",
+      "expected_depth": 13,
+      "meta_atoms": 13,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 44,
+      "col": 23,
+      "char": "}",
+      "expected_depth": 12,
+      "meta_atoms": 12,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 45,
+      "col": 21,
+      "char": "}",
+      "expected_depth": 11,
+      "meta_atoms": 11,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 46,
+      "col": 19,
+      "char": "}",
+      "expected_depth": 10,
+      "meta_atoms": 10,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 47,
+      "col": 17,
+      "char": "}",
+      "expected_depth": 9,
+      "meta_atoms": 9,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 48,
+      "col": 15,
+      "char": "}",
+      "expected_depth": 8,
+      "meta_atoms": 8,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 49,
+      "col": 13,
+      "char": "}",
+      "expected_depth": 7,
+      "meta_atoms": 7,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 50,
+      "col": 11,
+      "char": "}",
+      "expected_depth": 6,
+      "meta_atoms": 6,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 51,
+      "col": 18,
+      "char": "{",
+      "expected_depth": 6,
+      "meta_atoms": 6,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.begin.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 51,
+      "col": 66,
+      "char": "}",
+      "expected_depth": 6,
+      "meta_atoms": 6,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 52,
+      "col": 9,
+      "char": "}",
+      "expected_depth": 5,
+      "meta_atoms": 5,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 53,
+      "col": 7,
+      "char": "}",
+      "expected_depth": 4,
+      "meta_atoms": 4,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 54,
+      "col": 5,
+      "char": "}",
+      "expected_depth": 3,
+      "meta_atoms": 3,
+      "scope": "source.json meta.mapping.value.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 55,
+      "col": 3,
+      "char": "}",
+      "expected_depth": 2,
+      "meta_atoms": 2,
+      "scope": "source.json meta.mapping.value.json meta.mapping.json punctuation.section.mapping.end.json"
+    },
+    {
+      "file": "openapi.json",
+      "row": 56,
+      "col": 1,
+      "char": "}",
+      "expected_depth": 1,
+      "meta_atoms": 1,
+      "scope": "source.json meta.mapping.json punctuation.section.mapping.end.json"
+    }
+  ]
+}

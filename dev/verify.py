@@ -3,7 +3,12 @@
 Checks two things, neither of which needs Sublime Text running:
 
   1. Every scope stack in fixtures/ is matched by exactly one rule of its kind,
-     and it is the rule for the correct nesting level.
+     and it is the rule for the correct nesting level. Two files feed this:
+     st4-scope-stacks.json holds keys and values captured from build 4200, and
+     bracket-scopes.json holds every delimiter in the samples, captured from build
+     4215 by probe_bracket_scopes.py. Delimiter levels are recomputed here from
+     document order rather than trusted from the file, so a stale capture cannot
+     quietly agree with itself.
   2. The same holds across the full space of object/array nesting shapes, so the
      rules stay mutually exclusive at depths the fixtures do not cover.
 
@@ -20,7 +25,7 @@ Run:  python verify.py
 
 Copyright (C) 2026 Lance Duvall
 SPDX-License-Identifier: AGPL-3.0-or-later
-Project: <https://github.com/lanz/sublime-json-color-schemes>
+Project: <https://github.com/lanz/sublime-deep-json>
 Licensed under the GNU Affero General Public License, version 3 or later.
 See LICENSE, or <https://www.gnu.org/licenses/>.
 """
@@ -37,6 +42,7 @@ SEQUENCE = "meta.sequence.json"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 FIXTURE = os.path.join(HERE, "fixtures", "st4-scope-stacks.json")
+DELIMITERS = os.path.join(HERE, "fixtures", "bracket-scopes.json")
 
 
 # ---------------------------------------------------------------- matcher ----
@@ -58,7 +64,14 @@ def _path_matches(atoms, stack):
 
 
 def selector_matches(selector, scope_string):
-    """Evaluate `selector` (positive path, optional single trailing `- path`)."""
+    """Evaluate `selector` against a scope stack.
+
+    A selector may be a comma-separated list of alternatives, as the number rules
+    are: matching any one of them is a match.
+    """
+    if "," in selector:
+        return any(selector_matches(part.strip(), scope_string)
+                   for part in selector.split(","))
     stack = scope_string.split()
     if " - " in selector:
         pos, neg = selector.split(" - ", 1)
@@ -142,6 +155,27 @@ LEAF_TAILS = {
 }
 
 
+# A delimiter carries its own container's meta scope. For an object that is
+# meta.mapping.json, not meta.mapping.value.json, because the value context is
+# what wraps a *value*; the braces belong to the mapping itself.
+DELIM_TAILS = {
+    "mapping": (
+        "meta.mapping.json",
+        [
+            "punctuation.section.mapping.begin.json",
+            "punctuation.section.mapping.end.json",
+        ],
+    ),
+    "sequence": (
+        "meta.sequence.json",
+        [
+            "punctuation.section.sequence.begin.json",
+            "punctuation.section.sequence.end.json",
+        ],
+    ),
+}
+
+
 def cases(max_depth):
     """Yield (kind, level, scope_string) over the nesting shape space."""
     for level in range(1, max_depth + 1):
@@ -152,6 +186,14 @@ def cases(max_depth):
             for kind, tails in LEAF_TAILS.items():
                 for tail in tails:
                     yield kind, level, " ".join(["source.json"] + ch + tail)
+        # the outer chain is level-1 deep; the delimiter's own container supplies
+        # the last meta atom, so a matched pair lands on the same level
+        for ch in chains(level - 1):
+            for kind, (own, puncts) in DELIM_TAILS.items():
+                for punct in puncts:
+                    yield kind, level, " ".join(
+                        ["source.json"] + ch + [own, punct]
+                    )
 
 
 # ----------------------------------------------------------------- checks ----
@@ -199,6 +241,57 @@ def main():
     for case, why in row_fail[:5]:
         print("    FAIL %s row %d (%s): %s"
               % (case["file"], case["row"], case["kind"], why))
+
+    # Real delimiter stacks, captured by dev/probe_bracket_scopes.py. Levels are
+    # recomputed here from document order rather than trusted from the file, so a
+    # stale capture cannot quietly agree with itself.
+    delim_total = delim_fail = 0
+    delim_build = None
+    if os.path.exists(DELIMITERS):
+        with open(DELIMITERS, encoding="utf-8") as fh:
+            captured = json.load(fh)
+        delim_build = captured.get("sublime_build")
+        real = [
+            c for c in captured["cases"]
+            if "punctuation.section.mapping" in c["scope"]
+            or "punctuation.section.sequence" in c["scope"]
+        ]
+        by_file = {}
+        for case in real:
+            by_file.setdefault(case["file"], []).append(case)
+        failures = []
+        for items in by_file.values():
+            items.sort(key=lambda c: (c["row"], c["col"]))
+            depth = 0
+            for case in items:
+                if case["char"] in "{[":
+                    depth += 1
+                    level = depth
+                else:
+                    level = depth
+                    depth -= 1
+                kind = ("mapping" if "punctuation.section.mapping" in case["scope"]
+                        else "sequence")
+                hits = [
+                    lv for lv, _slot, sel in by_kind[kind]
+                    if selector_matches(sel, case["scope"])
+                ]
+                if hits != [min(level, max_level)]:
+                    failures.append((case, kind, level, hits))
+        delim_total = len(real)
+        delim_fail = len(failures)
+        print(
+            "real ST4 build %s delimiter stacks: %d cases, %d failures  %s"
+            % (delim_build, delim_total, delim_fail,
+               "OK" if not delim_fail else "FAILED")
+        )
+        for case, kind, level, hits in failures[:5]:
+            print("    FAIL %s r%d c%d %s %s L%d matched=%s" % (
+                case["file"], case["row"], case["col"], case["char"],
+                kind, level, hits))
+    else:
+        print("real ST4 delimiter stacks: not captured; run "
+              "dev/probe_bracket_scopes.py")
 
     print(
         "real ST4 build %s scope stacks: %d cases, %d failures  %s"
@@ -253,7 +346,7 @@ def main():
     deep_hits = [lv for lv, _s, sel in by_kind["key"] if selector_matches(sel, deep)]
     print("40-deep key matches level(s): %s (expected [%d])" % (deep_hits, max_level))
 
-    bad = (failures or bleed or real_fail or row_fail
+    bad = (failures or bleed or delim_fail or real_fail or row_fail
            or deep_hits != [max_level])
     print("\nRESULT:", "FAILED" if bad else "ALL CHECKS PASSED")
     return 1 if bad else 0

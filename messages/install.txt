@@ -1,15 +1,21 @@
-JSON Color Schemes
-==================
+Deep JSON Color Schemes
+=======================
 
-Thanks for installing. Five color schemes are included:
+Thanks for installing. Six palettes are included:
 
-  * Monokai JSON        -- the Monokai palette
-  * Monokai Chalk JSON  -- a more pastel palette, with all ten levels actually distinct
-  * Monokai Neon JSON   -- Monokai's accent colors at full strength
-  * Monokai Neue JSON   -- inspired by Monokai Neue, with its six-color cycle
-  * Jazz Solo Cup JSON  -- the teal and purple of the 1990s Jazz cup design
+  * Deep JSON - Monokai Classic  -- the Monokai palette
+  * Deep JSON - Monokai Chalk    -- a more pastel palette, with all ten levels distinct
+  * Deep JSON - Monokai Neon     -- Monokai's accent colors at full strength
+  * Deep JSON - Monokai Neue     -- inspired by Monokai Neue, with its six-color cycle
+  * Deep JSON - Jazz Solo Cup    -- the teal and purple of the 1990s Jazz cup design
+  * Deep JSON - VS Code Dark     -- Dark 2026, the theme VS Code shipss, with depth colors on top
 
-Pick one under Preferences -> Select Color Scheme...
+Each also comes in a "(Muted Brackets)" variant, twelve schemes in all. Braces and
+brackets are colored by depth as well; the plain name makes them exactly the
+color of the content they wrap, and the muted variant desaturates them so they
+read as structure.
+
+Pick one under Preferences -> Select Color Scheme, filtering on "deep json".
 
 Every level of JSON nesting gets its own color. Levels 1-10 use the palette and
 then it cycles, up to 20 levels deep.
@@ -18,8 +24,8 @@ Requires Sublime Text 4 -- the depth coloring relies on scope names that ST4's
 JSON syntax produces.
 
 To recolor a level without editing the package, create
-Packages/User/Monokai JSON.sublime-color-scheme containing only the variables you
-want to change:
+Packages/User/Deep JSON - Monokai Classic.sublime-color-scheme containing only the
+variables you want to change (json_bracket1..10 recolor the delimiters alone):
 
   {
       "variables":
@@ -31,6 +37,6 @@ want to change:
 Sublime merges color schemes that share a filename, and Packages/User wins, so
 your overrides survive updates.
 
-Docs and screenshots: https://github.com/lanz/sublime-json-color-schemes
+Docs and screenshots: https://github.com/lanz/sublime-deep-json
 
 By Lance Duvall. Licensed under the GNU Affero General Public License v3.

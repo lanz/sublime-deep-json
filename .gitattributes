@@ -5,9 +5,10 @@
 # Keep the installed package small. GitHub honors export-ignore when it builds the
 # archive Package Control downloads, so everything below stays on the repository
 # page without being installed into anyone's editor.
-/screenshots export-ignore
+/dev export-ignore
 /images export-ignore
 /samples export-ignore
-/dev export-ignore
+/screenshots export-ignore
+
 *.sublime-project export-ignore
 *.sublime-workspace export-ignore

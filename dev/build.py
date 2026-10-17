@@ -1,14 +1,14 @@
-"""Generate the Sublime Text 4 .sublime-color-scheme files for both themes.
+"""Generate the Sublime Text 4 .sublime-color-scheme files for all themes.
 
 Run:  python build.py
 Writes  ../<Theme Name>.sublime-color-scheme  (the repository root)
 
-The base (non-JSON) rules and globals are ports of the original ST2/ST3 .tmTheme
+The base (non-JSON) rules and globals are ports of my original ST2/ST3 .tmTheme
 files; the JSON depth rules are generated from depth_selectors.py.
 
 Copyright (C) 2026 Lance Duvall
 SPDX-License-Identifier: AGPL-3.0-or-later
-Project: <https://github.com/lanz/sublime-json-color-schemes>
+Project: <https://github.com/lanz/sublime-deep-json>
 Licensed under the GNU Affero General Public License, version 3 or later.
 See LICENSE, or <https://www.gnu.org/licenses/>.
 """
@@ -17,7 +17,14 @@ import io
 import json
 import os
 
+import brackets as B
 import depth_selectors as S
+
+# The family name every scheme carries, so the five group together in the
+# picker. Sublime Text shows a scheme's filename as its title, and a colon is
+# not legal in a filename, so the join is a hyphen where VS Code uses a colon.
+BRAND = "Deep JSON"
+SEPARATOR = " - "
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT_ROOT = os.path.dirname(HERE)
@@ -128,12 +135,160 @@ JAZZ_LEVELS = [
 #   bracketContentsOptions -> bracket_contents_options, tagsOptions -> tags_options
 # --------------------------------------------------------------------------
 
+# --------------------------------------------------------------------------
+# Markdown
+#
+# The .tmTheme files these palettes came from carried three markup rules between
+# them, all of them for diffs, so a Markdown file rendered as one flat color.
+# Monokai Neue and VS Code Dark get Markdown from the themes they are built on;
+# this gives the other four the same treatment.
+#
+# Scope names differ between the two editors in about half of these cases, so a
+# rule lists both spellings and the one the other editor never emits simply never
+# matches. The names were read out of ST4's bundled Markdown syntax and VS Code's
+# markdown-basics grammar rather than recalled.
+#
+# Every structural mark, the hashes and fence ticks and quote arrows and table
+# pipes, takes the "marker" role, which is the palette's comment color. The prose
+# stays the thing you read; the punctuation holding it up recedes.
+#
+# (name, role, font style, scope)
+MARKDOWN = [
+    ("Markdown: heading", "heading", "bold",
+     "markup.heading, markup.heading entity.name"),
+    ("Markdown: heading punctuation", "marker", None,
+     "punctuation.definition.heading.markdown,"
+     " punctuation.definition.heading.begin.markdown,"
+     " punctuation.definition.heading.end.markdown,"
+     " punctuation.definition.heading.setext.markdown"),
+    ("Markdown: bold", "emphasis", "bold", "markup.bold"),
+    ("Markdown: italic", "emphasis", "italic", "markup.italic"),
+    ("Markdown: emphasis punctuation", "marker", None,
+     "punctuation.definition.bold.markdown,"
+     " punctuation.definition.bold.begin.markdown,"
+     " punctuation.definition.bold.end.markdown,"
+     " punctuation.definition.italic.markdown,"
+     " punctuation.definition.italic.begin.markdown,"
+     " punctuation.definition.italic.end.markdown"),
+    ("Markdown: strikethrough", "marker", None,
+     "markup.strikethrough,"
+     " punctuation.definition.strikethrough.markdown,"
+     " punctuation.definition.strikethrough.begin.markdown,"
+     " punctuation.definition.strikethrough.end.markdown"),
+    ("Markdown: inline code", "code", None,
+     "markup.raw.inline, markup.inline.raw"),
+    # The body of a fenced block keeps the foreground, or its own syntax when the
+    # fence names a language. Only the ticks and the language label are colored.
+    ("Markdown: code fence", "marker", None,
+     "punctuation.definition.raw.markdown,"
+     " punctuation.definition.raw.begin.markdown,"
+     " punctuation.definition.raw.end.markdown,"
+     " punctuation.definition.raw.code-fence.begin.markdown,"
+     " punctuation.definition.raw.code-fence.end.markdown,"
+     " punctuation.definition.markdown,"
+     " fenced_code.block.language"),
+    ("Markdown: quote", "quote", "italic", "markup.quote"),
+    ("Markdown: quote punctuation", "marker", None,
+     "punctuation.definition.blockquote.markdown,"
+     " punctuation.definition.quote.begin.markdown"),
+    # The bullet alone. In ST4 markup.list is a meta scope over the whole item, so
+    # coloring that would recolor every list's prose.
+    ("Markdown: list bullet", "bullet", None,
+     "markup.list.unnumbered.bullet.markdown,"
+     " markup.list.numbered.bullet.markdown,"
+     " punctuation.definition.list_item.markdown,"
+     " punctuation.definition.list.begin.markdown"),
+    ("Markdown: link", "link", "underline", "markup.underline.link"),
+    ("Markdown: link text and title", "linktext", None,
+     "meta.link.inline.description.markdown,"
+     " meta.link.reference.description.markdown,"
+     " string.other.link.description.markdown,"
+     " string.other.link.title.markdown,"
+     " string.other.link.description.title.markdown"),
+    ("Markdown: link punctuation", "marker", None,
+     "punctuation.definition.link.markdown,"
+     " punctuation.definition.link.begin.markdown,"
+     " punctuation.definition.link.end.markdown,"
+     " punctuation.definition.link.description.begin.markdown,"
+     " punctuation.definition.link.description.end.markdown,"
+     " punctuation.definition.link.title.begin.markdown,"
+     " punctuation.definition.link.title.end.markdown,"
+     " punctuation.definition.image.begin.markdown,"
+     " punctuation.definition.image.end.markdown,"
+     " punctuation.definition.metadata.markdown,"
+     " punctuation.definition.metadata.begin.markdown,"
+     " punctuation.definition.metadata.end.markdown,"
+     " punctuation.definition.string.begin.markdown,"
+     " punctuation.definition.string.end.markdown"),
+    ("Markdown: reference", "reference", None,
+     "constant.other.reference.link.markdown,"
+     " punctuation.definition.constant.markdown,"
+     " punctuation.definition.constant.begin.markdown,"
+     " punctuation.definition.constant.end.markdown"),
+    ("Markdown: escape", "reference", None, "constant.character.escape.markdown"),
+    ("Markdown: thematic break", "marker", "bold",
+     "meta.separator, punctuation.definition.thematic-break.markdown"),
+    ("Markdown: table punctuation", "marker", None,
+     "punctuation.separator.table-cell.markdown,"
+     " punctuation.separator.table.markdown,"
+     " punctuation.definition.table.markdown,"
+     " punctuation.definition.table-cell-alignment.markdown,"
+     " punctuation.section.table-header.markdown"),
+]
+
+# Monokai's own accents. Headings take the orange it gives parameters, emphasis the
+# pink it gives keywords, code the yellow it gives strings.
+MONOKAI_MARKDOWN = {
+    "heading": "orange",
+    "emphasis": "pink",
+    "marker": "comment",
+    "code": "string",
+    "quote": "cyan",
+    "link": "cyan",
+    "linktext": "green",
+    "bullet": "pink",
+    "reference": "purple",
+}
+
+# Jazz is a wide teal stroke with a thin purple zig-zag above it, so the teal is the
+# base and the purple is the accent. Prose takes the teal, which is what text.html
+# sets, and the purple family carries the structure sitting on top of it: violet for
+# the headings and bullets, lavender for the quotes and links. References and escapes
+# take white so they stand apart from both.
+JAZZ_MARKDOWN = {
+    "heading": "violet",
+    "emphasis": "pink",
+    "marker": "foreground",
+    "code": "mint",
+    "quote": "lavender",
+    "link": "lavender",
+    "linktext": "violet",
+    "bullet": "violet",
+    "reference": "white",
+}
+
+
+def markdown_rules(roles):
+    """MARKDOWN as scheme rules, each role resolved to a palette variable."""
+    out = []
+    for name, role, style, scope in MARKDOWN:
+        settings = {"foreground": "var(%s)" % roles[role]}
+        if style is not None:
+            settings["font_style"] = style
+        out.append((name, scope, settings))
+    return out
+
+
 MONOKAI = {
-    "name": "Monokai JSON",
-    "filename": "Monokai JSON",
+    "name": "Monokai Classic",
+    # Only the active guide is declared: Hazenberg's own orange, which
+    # belongs on the faithful variant. The quieter two derive, because the
+    # orange at half alpha made a loud stack. Chalk and Neon depart from the
+    # palette, so they derive all three.
+    "guides": (None, None, "#9D550FB0"),
     "blurb": [
         "Ported from my original ST2/ST3 .tmTheme. Built on the Monokai palette by",
-        "Wimer Hazenberg. Not affiliated with or endorsed by Monokai or Monokai Pro.",
+        "Wimer Hazenberg.",
     ],
     "levels": MONOKAI_LEVELS,
     "variables": [
@@ -164,7 +319,6 @@ MONOKAI = {
         ("selection_border", "var(selection_border)"),
         ("find_highlight", "var(find_highlight)"),
         ("find_highlight_foreground", "#000000"),
-        ("active_guide", "#9D550FB0"),
         ("brackets_foreground", "#F8F8F2A5"),
         ("brackets_options", "underline"),
         ("bracket_contents_foreground", "#F8F8F2A5"),
@@ -263,20 +417,23 @@ MONOKAI = {
             "entity.name.filename.find-in-files",
             {"foreground": "var(string)"},
         ),
-    ],
+    ] + markdown_rules(MONOKAI_MARKDOWN),
 }
 
 JAZZ = {
-    "name": "Jazz Solo Cup JSON",
-    "filename": "Jazz Solo Cup JSON",
+    "name": "Jazz Solo Cup",
+    # Hand-picked rather than derived. Jazz's level 1 is white, so deriving the
+    # guides from it gives neutral grey and loses the teal the design is built
+    # on. The stack is the active color at half alpha, the idiom Sublime's own
+    # schemes use.
+    "guides": ("#1C3438", "#00B1B380", "#00B1B3"),
     "blurb": [
         "Named after 'Jazz', the teal-and-purple design that Sweetheart Cup",
         "Company printed on disposable cups from 1992: a wide jagged teal stroke",
         "with a thin purple zig-zag above it, and one of the most recognizable",
         "images of 1990s American pop culture. This palette follows that pairing",
         "-- teal as the base, purple as the accent. Only the colors are borrowed;",
-        "no part of the design is reproduced. Not affiliated with or endorsed by",
-        "Solo Cup Company or Sweetheart Cup Company.",
+        "no part of the design is reproduced.",
     ],
     "levels": JAZZ_LEVELS,
     "variables": [
@@ -305,7 +462,6 @@ JAZZ = {
         ("selection_border", "var(selection_border)"),
         ("find_highlight", "var(find_highlight)"),
         ("find_highlight_foreground", "#000000"),
-        ("active_guide", "#9D550FB0"),
         ("brackets_foreground", "var(teal)"),
         ("brackets_options", "underline"),
         ("bracket_contents_foreground", "var(teal)"),
@@ -315,7 +471,9 @@ JAZZ = {
     "rules": [
         ("Comment", "comment", {"foreground": "var(foreground)"}),
         ("String", "string", {"foreground": "var(mint)"}),
-        ("Plaintext", "text.html", {"foreground": "var(violet)"}),
+        # Jazz colors prose rather than leaving it the default grey. The teal is
+        # the base of the design, so it is the prose and not an accent.
+        ("Plaintext", "text.html", {"foreground": "var(teal)"}),
         ("Number", "constant.numeric", {"foreground": "var(pink)"}),
         ("Built-in constant", "constant.language", {"foreground": "var(pink)"}),
         (
@@ -401,34 +559,37 @@ JAZZ = {
             "entity.name.filename.find-in-files",
             {"foreground": "var(lavender)"},
         ),
-    ],
+    ] + markdown_rules(JAZZ_MARKDOWN),
 }
 
-# Same base palette, globals and syntax rules as Monokai JSON; only the depth ramp
+# Same base palette, globals and syntax rules as Monokai Classic; only the ramp
 # and the identifying fields differ.
 MONOKAI_CHALK = dict(
     MONOKAI,
-    name="Monokai Chalk JSON",
-    filename="Monokai Chalk JSON",
+    name="Monokai Chalk",
     levels=MONOKAI_CHALK_LEVELS,
+    # a departure from the Monokai palette, so it derives its own guides
+    # rather than inheriting Monokai's orange from MONOKAI above
+    guides=None,
     blurb=[
-        "Monokai JSON's soft pastels, but with all ten levels actually distinct:",
+        "Monokai Classic's soft pastels, but with all ten levels actually distinct:",
         "the second pass at that ramp swapped its near-duplicate deep levels for a",
         "purple, a pink and a teal of their own. Built on the Monokai palette by",
-        "Wimer Hazenberg. Not affiliated with or endorsed by Monokai or Monokai Pro.",
+        "Wimer Hazenberg.",
     ],
 )
 
 MONOKAI_NEON = dict(
     MONOKAI,
-    name="Monokai Neon JSON",
-    filename="Monokai Neon JSON",
+    name="Monokai Neon",
     levels=MONOKAI_NEON_LEVELS,
+    # a departure from the Monokai palette, so it derives its own guides
+    # rather than inheriting Monokai's orange from MONOKAI above
+    guides=None,
     blurb=[
-        "Monokai JSON with the color turned up: the depth ramp uses Monokai's own",
+        "Monokai Classic with the color turned up: the ramp uses Monokai's own",
         "accent colors at full strength rather than pastel tints of them. Built on",
-        "the Monokai palette by Wimer Hazenberg. Not affiliated with or endorsed by",
-        "Monokai or Monokai Pro.",
+        "the Monokai palette by Wimer Hazenberg.",
     ],
 )
 
@@ -447,10 +608,13 @@ MONOKAI_NEUE_LEVELS = [
 _NEUE_GLOBALS, _NEUE_RULES = load_base("monokai-neue-base.json")
 
 MONOKAI_NEUE = {
-    "name": "Monokai Neue JSON",
-    "filename": "Monokai Neue JSON",
+    "name": "Monokai Neue",
+    # Level 1's blue, rather than the purple that deriving from level 2 gives.
+    # The quieter two still derive, and are a muted form of this same blue, so
+    # the active guide reads as a brighter version of the stack behind it.
+    "guides": (None, None, "#66D9EFB0"),
     "blurb": [
-        "Monokai Neue by Josh Kaplan, with a fuller set of depth rules. Neue",
+        "Based on Monokai Neue by Josh Kaplan, with a fuller set of depth rules. Neue",
         "colored object keys in objects; this adds arrays, string values,",
         "numbers and booleans, and carries the ramp past level 10. Its six-color",
         "cycle is unchanged.",
@@ -463,11 +627,58 @@ MONOKAI_NEUE = {
     "rules": _NEUE_RULES,
 }
 
+# Deep JSON - VS Code Dark is built on Dark 2026, the theme Visual Studio Code
+# ships. Levels 1 to 6 are its own signature syntax colors, in the order its rules
+# use them. It has only six that are mutually distinct: its two blues sit 15.2
+# apart in CIELAB and its two greys 16.8, too close to tell apart five levels down,
+# so #A5D6FF, #8B949E and #C9D1D9 are left out. Levels 7 to 10 are chosen to stay
+# as far from the first six as possible, which is how Monokai Neon fills its deep
+# end too. Three of them come from dark_modern, which Dark 2026 includes, so they
+# belong to the same family.
+#
+# Minimum pairwise distance 22.6 dE, minimum contrast 5.3:1 against #121314.
+VSCODE_DARK_LEVELS = [
+    "#BBBEBF",  # 1  editor foreground
+    "#79C0FF",  # 2  constants, properties
+    "#FFA657",  # 3  entity names, variables
+    "#7EE787",  # 4  tags, escapes
+    "#FF7B72",  # 5  keywords, storage
+    "#D2A8FF",  # 6  functions
+    "#4EC9B0",  # 7  classic VS Code teal
+    "#B267E6",  # 8  its debug-token purple
+    "#D7BA7D",  # 9  classic VS Code tan
+    "#B5CEA8",  # 10 classic VS Code sage
+]
+
+_VSCODE_GLOBALS, _VSCODE_RULES = load_base("vscode-dark-base.json")
+
+VSCODE_DARK = {
+    "name": "VS Code Dark",
+    # Dark 2026's own two guide colors. The stack sits between them, since VS
+    # Code has no equivalent of Sublime's third guide.
+    "guides": ("#8384854D", "#83848599", "#838485"),
+    "blurb": [
+        "Dark 2026, the theme Visual Studio Code ships, with depth colors layered",
+        "on top. The levels are its own syntax colors, so the file keeps looking",
+        "like VS Code while telling you how deep you are. Its VS Code counterpart",
+        "reads the same theme, so the two editors match.",
+        "",
+        "Derived from Dark 2026, from the MIT-licensed microsoft/vscode",
+        "repository, Copyright (c) Microsoft Corporation.",
+    ],
+    "levels": VSCODE_DARK_LEVELS,
+    "variables": [],
+    "globals": _VSCODE_GLOBALS,
+    "rules": _VSCODE_RULES,
+}
+
 KIND_LABEL = {
     "key": "object key",
     "string": "string value / array element",
     "number": "number",
     "constant": "true / false / null",
+    "mapping": "object braces",
+    "sequence": "array brackets",
 }
 
 HEADER = """\
@@ -492,7 +703,7 @@ HEADER = """\
 //
 // Copyright (C) 2026 Lance Duvall
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Project: https://github.com/lanz/sublime-json-color-schemes
+// Project: https://github.com/lanz/sublime-deep-json
 // Licensed under the GNU Affero General Public License, version 3 or later.
 // See LICENSE, or <https://www.gnu.org/licenses/>.
 """
@@ -513,13 +724,26 @@ def _blurb(theme):
     return out + "//\n"
 
 
-def render(theme):
+def label(theme, style):
+    """The scheme's display name, which is also its filename."""
+    return BRAND + SEPARATOR + theme["name"] + style["suffix"]
+
+
+def background_of(theme):
+    """The scheme background, following a var() indirection if there is one."""
+    value = dict(theme["globals"]).get("background", "#1E1E1E")
+    if value.startswith("var(") and value.endswith(")"):
+        value = dict(theme["variables"]).get(value[4:-1], "#1E1E1E")
+    return value
+
+
+def render(theme, style):
     max_level = S.MAX_LEVEL
     palette_size = len(theme["levels"])
     out = io.StringIO()
     out.write(
         HEADER.format(
-            name=theme["name"],
+            name=label(theme, style),
             blurb=_blurb(theme),
             palette=palette_size,
             next=palette_size + 1,
@@ -527,7 +751,7 @@ def render(theme):
         )
     )
     out.write("{\n")
-    out.write('\t"name": %s,\n' % q(theme["name"]))
+    out.write('\t"name": %s,\n' % q(label(theme, style)))
     out.write('\t"author": %s,\n' % q(AUTHOR))
     out.write('\t"variables":\n\t{\n')
     for k, v in theme["variables"]:
@@ -535,17 +759,43 @@ def render(theme):
     out.write("\n\t\t// JSON nesting levels, outermost first.\n")
     for i, color in enumerate(theme["levels"], 1):
         out.write("\t\t%s: %s,\n" % (q("json_level%d" % i), q(color)))
+
+    brackets = B.bracket_levels(
+        theme["levels"], background_of(theme), style["id"]
+    )
+    out.write("\n\t\t// Delimiter colors, one per level. Override these in\n")
+    out.write("\t\t// Packages/User to recolor braces and brackets alone.\n")
+    for i, color in enumerate(brackets, 1):
+        out.write("\t\t%s: %s,\n" % (q("json_bracket%d" % i), q(color)))
     out.write("\t},\n")
 
     out.write('\t"globals":\n\t{\n')
+    guide, stack_guide, active_guide = B.resolve_guides(
+        theme.get("guides"), theme["levels"], background_of(theme)
+    )
+    computed = {
+        "guide": guide,
+        "stack_guide": stack_guide,
+        "active_guide": active_guide,
+    }
     for k, v in theme["globals"]:
+        # the computed values below replace whatever the base palette carried
+        if k in computed:
+            continue
         out.write("\t\t%s: %s,\n" % (q(k), q(v)))
+    out.write("\n\t\t// Indent guides, derived from this palette. One color each:\n")
+    out.write("\t\t// Sublime draws guides as chrome rather than as tokens, so\n")
+    out.write("\t\t// they cannot vary by nesting depth.\n")
+    for k in ("guide", "stack_guide", "active_guide"):
+        out.write("\t\t%s: %s,\n" % (q(k), q(computed[k])))
     out.write("\t},\n")
 
     out.write('\t"rules":\n\t[\n')
     for name, scope, settings in theme["rules"]:
         out.write("\t\t{\n")
-        out.write("\t\t\t%s: %s,\n" % (q("name"), q(name)))
+        # VS Code rules are mostly unnamed, so an empty name is left out
+        if name:
+            out.write("\t\t\t%s: %s,\n" % (q("name"), q(name)))
         out.write("\t\t\t%s: %s,\n" % (q("scope"), q(scope)))
         for key in ("foreground", "background", "font_style"):
             if key in settings:
@@ -566,22 +816,43 @@ def render(theme):
         )
         out.write("\t\t\t%s: %s,\n" % (q("scope"), q(selector)))
         out.write(
-            "\t\t\t%s: %s,\n" % (q("foreground"), q("var(json_level%d)" % slot))
+            "\t\t\t%s: %s,\n"
+            % (
+                q("foreground"),
+                q("var(%s%d)" % (S.COLOR_VARIABLE[kind], slot)),
+            )
         )
         out.write("\t\t},\n")
     out.write("\t],\n}\n")
     return out.getvalue()
 
 
+def prune(keep):
+    """Delete schemes this run did not write, so a rename leaves nothing behind."""
+    removed = []
+    for name in sorted(os.listdir(OUT_ROOT)):
+        if name.endswith(".sublime-color-scheme") and name not in keep:
+            os.remove(os.path.join(OUT_ROOT, name))
+            removed.append(name)
+    return removed
+
+
 def main():
-    for theme in (MONOKAI, MONOKAI_CHALK, MONOKAI_NEON, MONOKAI_NEUE, JAZZ):
-        path = os.path.join(
-            OUT_ROOT, theme["filename"] + ".sublime-color-scheme"
-        )
-        text = render(theme)
-        with open(path, "w", encoding="utf-8", newline="\n") as fh:
-            fh.write(text)
-        print("wrote %s (%d bytes)" % (path, len(text.encode("utf-8"))))
+    written = set()
+    for theme in (MONOKAI, MONOKAI_CHALK, MONOKAI_NEON, MONOKAI_NEUE, JAZZ,
+                  VSCODE_DARK):
+        for style in B.STYLES:
+            name = label(theme, style) + ".sublime-color-scheme"
+            path = os.path.join(OUT_ROOT, name)
+            text = render(theme, style)
+            with open(path, "w", encoding="utf-8", newline="\n") as fh:
+                fh.write(text)
+            written.add(name)
+            print("wrote %s (%d bytes)" % (name, len(text.encode("utf-8"))))
+    stale = prune(written)
+    print("\n%d schemes written" % len(written))
+    if stale:
+        print("removed %d stale scheme(s): %s" % (len(stale), ", ".join(stale)))
 
 
 if __name__ == "__main__":

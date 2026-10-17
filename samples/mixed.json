@@ -7,15 +7,15 @@
     {
       "Object Level 3": [
         "Array Level 4",
-        "Array Level 4",
+        4.04,
         {
           "Object Level 5": [
-            "Array Level 6",
+            false,
             [
-              "Array Level 7",
+              true,
               {
                 "Object Level 8": [
-                  "Array Level 9",
+                  null,
                   {
                     "Object Level 10": "Value"
                   }

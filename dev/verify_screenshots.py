@@ -1,7 +1,7 @@
 """Verify every screenshot's per-level colors against its scheme's own palette.
 
 Palettes are read out of the generated .sublime-color-scheme files, so this checks the
-images against what actually ships, including Monokai Neue JSON's six-level cycle.
+images against what actually ships, including Monokai Neue's six-level cycle.
 Rows are banded on the gutter line numbers where present, otherwise on glyph pixels.
 
 Needs Pillow (pip install pillow); nothing else in dev/ has a dependency.
@@ -9,7 +9,7 @@ Run:  python verify_screenshots.py
 
 Copyright (C) 2026 Lance Duvall
 SPDX-License-Identifier: AGPL-3.0-or-later
-Project: <https://github.com/lanz/sublime-json-color-schemes>
+Project: <https://github.com/lanz/sublime-deep-json>
 Licensed under the GNU Affero General Public License, version 3 or later.
 See LICENSE, or <https://www.gnu.org/licenses/>.
 """
@@ -20,7 +20,8 @@ import re
 
 from PIL import Image
 
-REPO = r"C:\git\Personal\sublime-json-color-schemes"
+# derived, so renaming the checkout cannot break this
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MAX_LEVEL = 20
 
 # code line -> nesting level, for each sample file
@@ -115,6 +116,18 @@ def check(path, pal, which):
     return (ok, bad, detail), None
 
 
+def slug(name):
+    """A scheme name as its screenshot folder.
+
+    Folders are slugs rather than the scheme name itself, so the paths in the
+    README need no percent-encoding and match the VS Code repository's layout.
+    """
+    out = "".join(ch if ch.isalnum() else "-" for ch in name.lower())
+    while "--" in out:
+        out = out.replace("--", "-")
+    return out.strip("-")
+
+
 total_ok = total_bad = 0
 for scheme in sorted(glob.glob(os.path.join(REPO, "*.sublime-color-scheme"))):
     name = os.path.basename(scheme).replace(".sublime-color-scheme", "")
@@ -122,7 +135,7 @@ for scheme in sorted(glob.glob(os.path.join(REPO, "*.sublime-color-scheme"))):
     print("\n=== %s   (%d-color cycle) ===" % (name, len(pal)))
     print("    " + " ".join(pal))
     for which in ("object", "array", "mixed"):
-        shot = os.path.join(REPO, "screenshots", name, which + ".png")
+        shot = os.path.join(REPO, "screenshots", slug(name), which + ".png")
         if not os.path.exists(shot):
             print("  %-11s MISSING" % which)
             continue

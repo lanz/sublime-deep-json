@@ -1,0 +1,37 @@
+Deep JSON Color Schemes 2.0.0
+=============================
+
+The package and its original five color schemes have been renamed.
+
+  JSON Color Schemes    ->  Deep JSON Color Schemes
+
+  Monokai JSON          ->  Deep JSON - Monokai Classic
+  Monokai Chalk JSON    ->  Deep JSON - Monokai Chalk
+  Monokai Neon JSON     ->  Deep JSON - Monokai Neon
+  Monokai Neue JSON     ->  Deep JSON - Monokai Neue
+  Jazz Solo Cup JSON    ->  Deep JSON - Jazz Solo Cup
+
+Package Control moves the installed package to the new name for you. Your
+color_scheme setting is not updated automatically, so if your JSON files have
+gone back to one flat color, pick the scheme again:
+
+  Preferences -> Select Color Scheme, then filter on "deep json"
+
+New in this release: braces and brackets are colored by depth too, each taking
+the color of the container it opens or closes, so a matched pair always agrees.
+Every palette now also ships a "(Muted Brackets)" variant that desaturates the
+delimiters so they read as structure.
+
+There is also a sixth palette, Deep JSON - VS Code Dark, built on Dark 2026, the
+theme Visual Studio Code ships: its colors and syntax rules as they are, with
+depth colors layered on top. Twelve schemes in all.
+
+The five original palettes have not changed. Their content colors are identical
+to 1.0.2.
+
+The schemes now share a prefix so they group together in the picker instead of
+scattering through it, and "Monokai Classic" tells the original palette apart
+from the Chalk, Neon and Neue variants that came after it.
+
+The same schemes are available for Visual Studio Code and VSCodium:
+https://github.com/lanz/vscode-deep-json

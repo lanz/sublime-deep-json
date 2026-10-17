@@ -10,7 +10,7 @@ With no argument it looks for Monokai Neue in Sublime Text's Installed Packages.
 
 Copyright (C) 2026 Lance Duvall
 SPDX-License-Identifier: AGPL-3.0-or-later
-Project: <https://github.com/lanz/sublime-json-color-schemes>
+Project: <https://github.com/lanz/sublime-deep-json>
 Licensed under the GNU Affero General Public License, version 3 or later.
 See LICENSE, or <https://www.gnu.org/licenses/>.
 

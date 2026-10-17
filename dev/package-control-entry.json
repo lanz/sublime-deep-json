@@ -1,12 +1,18 @@
-// Entry to add to wbond/package_control_channel in repository/j.json,
-// in alphabetical order among the other "J" packages.
+// Entry for wbond/package_control_channel, in repository/d.json. The copy
+// upstream is authoritative; this is here so the entry can be amended without
+// going to find it.
 //
-// Note: name, description and author are pulled from the GitHub repo itself, so
-// the description lives in the repository's About field, not here.  "author" is
+// previous_names is what migrates existing installations: Package Control moves
+// them to the new name rather than leaving them orphaned on the old one. It must
+// be an array of strings.
+//
+// Note: name, description and author come from the GitHub repo itself, so the
+// description lives in the repository's About field, not here. "author" is
 // overridden below so the display name is used rather than the account name.
 {
-	"name": "JSON Color Schemes",
-	"details": "https://github.com/lanz/sublime-json-color-schemes",
+	"name": "Deep JSON Color Schemes",
+	"previous_names": ["JSON Color Schemes"],
+	"details": "https://github.com/lanz/sublime-deep-json",
 	"author": "Lance Duvall",
 	"labels": ["color scheme", "json", "monokai", "dark"],
 	"releases": [
