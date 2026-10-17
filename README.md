@@ -213,7 +213,7 @@ Open a JSON file, then *Preferences → Settings – Syntax Specific*. That open
 
 ```json
 {
-    "color_scheme": "Deep JSON - Monokai Chalk.sublime-color-scheme",
+  "color_scheme": "Deep JSON - Monokai Chalk.sublime-color-scheme",
 }
 ```
 
@@ -335,11 +335,11 @@ and leave everything else alone. Create `Packages/User/Deep JSON - Monokai Class
 
 ```json
 {
-	"variables":
-	{
-		"json_level2": "#7FDBCA",
-		"json_level3": "#C792EA",
-	},
+  "variables":
+  {
+    "json_level2": "#7FDBCA",
+    "json_level3": "#C792EA",
+  },
 }
 ```
 

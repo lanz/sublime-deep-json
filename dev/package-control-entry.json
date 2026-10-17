@@ -11,10 +11,10 @@
 // overridden below so the display name is used rather than the account name.
 {
 	"name": "Deep JSON Color Schemes",
-	"previous_names": ["JSON Color Schemes"],
 	"details": "https://github.com/lanz/sublime-deep-json",
 	"author": "Lance Duvall",
 	"labels": ["color scheme", "json", "monokai", "dark"],
+	"previous_names": ["JSON Color Schemes"],
 	"releases": [
 		{
 			"sublime_text": ">=4200",
